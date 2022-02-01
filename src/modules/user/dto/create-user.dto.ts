@@ -1,6 +1,6 @@
 import { SocialLinks } from '../interfaces/SocialLinks.interface';
 
-export class CreateUserDTO {
+export class CreateUserDto {
   readonly name: string;
   readonly title: string;
   readonly email: string;
