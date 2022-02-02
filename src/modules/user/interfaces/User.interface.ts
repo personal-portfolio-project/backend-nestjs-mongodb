@@ -1,5 +1,5 @@
 import { Document } from 'mongoose';
-import { SocialLinks } from './SocialLinks.interface';
+import { SocialLinks } from './social-links.interface';
 
 export interface User extends Document {
   readonly name: string;

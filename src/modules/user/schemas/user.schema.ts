@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { SocialLinks } from '../interfaces/SocialLinks.interface';
+import { SocialLinks } from '../interfaces/social-links.interface';
 
 export type UserDocument = User & Document;
 

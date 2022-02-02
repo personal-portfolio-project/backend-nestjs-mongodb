@@ -1,4 +1,4 @@
-import { SocialLinks } from '../interfaces/SocialLinks.interface';
+import { SocialLinks } from '../interfaces/social-links.interface';
 
 export class CreateUserDto {
   readonly name: string;
