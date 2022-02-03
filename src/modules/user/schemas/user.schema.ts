@@ -17,7 +17,6 @@ class SocialLinkSchema implements SocialLinksInterface {
   logo: string;
 }
 
-// @Schema({ timestamps: true })
 @Schema({ timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } })
 export class User extends Abstract implements UserInterface {
   @Prop({ required: true, type: String })
