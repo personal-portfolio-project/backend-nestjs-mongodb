@@ -1,6 +1,6 @@
-import { IResponse } from '../interfaces/response.interface';
+import { ResponseInterface } from '../interfaces/response.interface';
 
-export class ResponseDto implements IResponse {
+export class ResponseDto implements ResponseInterface {
   success: boolean;
   code: number;
   data?: any;

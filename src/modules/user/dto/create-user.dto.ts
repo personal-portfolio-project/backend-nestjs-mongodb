@@ -1,5 +1,7 @@
 import { Type } from 'class-transformer';
 import {
+  ArrayNotEmpty,
+  ArrayUnique,
   IsArray,
   IsEmail,
   IsNotEmpty,
@@ -12,8 +14,11 @@ export class CreateUserDto {
   @IsNotEmpty()
   readonly name: string;
 
+  @IsArray()
   @IsNotEmpty()
-  readonly title: string;
+  @ArrayNotEmpty()
+  @ArrayUnique()
+  readonly title: string[];
 
   @IsEmail()
   @IsNotEmpty()

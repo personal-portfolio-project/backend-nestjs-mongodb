@@ -12,14 +12,16 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ResponseDto } from 'src/common/dto/response.dto';
-import { IResponse } from 'src/common/interfaces/response.interface';
+import { ResponseInterface } from 'src/common/interfaces/response.interface';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  async create(@Body() createUserDto: CreateUserDto): Promise<IResponse> {
+  async create(
+    @Body() createUserDto: CreateUserDto,
+  ): Promise<ResponseInterface> {
     try {
       const result = await this.userService.create(createUserDto);
       // console.log(result);

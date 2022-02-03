@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { SocialLinks } from '../interfaces/social-links.interface';
+import { Abstract } from 'src/common/schemas/abstract.schema';
+import { UserInterface } from 'src/modules/user/interfaces/user.interface';
 
 export type UserDocument = User & Document;
 
@@ -15,13 +16,14 @@ class SocialLinkSchema {
   logo: string;
 }
 
-@Schema()
-export class User {
+// @Schema({ timestamps: true })
+@Schema({ timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } })
+export class User extends Abstract implements UserInterface {
   @Prop({ required: true, type: String })
   name: string;
 
-  @Prop({ required: true, type: String })
-  title: number;
+  @Prop({ required: true, type: [String] })
+  title: string[];
 
   @Prop({ required: true, type: String })
   email: string;
