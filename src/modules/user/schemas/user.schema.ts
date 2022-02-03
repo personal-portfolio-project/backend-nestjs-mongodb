@@ -1,11 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Abstract } from 'src/common/schemas/abstract.schema';
+import { SocialLinksInterface } from '../interfaces/social-links.interface';
 import { UserInterface } from '../interfaces/user.interface';
 
 export type UserDocument = User & Document;
 
-class SocialLinkSchema {
+class SocialLinkSchema implements SocialLinksInterface {
   @Prop({ required: true, type: String })
   name: string;
 
