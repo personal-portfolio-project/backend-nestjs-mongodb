@@ -38,8 +38,8 @@ export class User {
   @Prop({ required: true, type: String })
   location: string;
 
-  @Prop({ required: true, type: SocialLinkSchema, default: {} })
-  social_links: SocialLinks;
+  @Prop({ required: true, type: [], default: [] })
+  social_links: SocialLinkSchema[];
 
   @Prop({ required: true, type: [String] })
   languages: string[];

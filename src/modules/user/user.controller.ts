@@ -19,12 +19,18 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto): IResponse {
-    return new ResponseDto(
-      HttpStatus.OK,
-      this.userService.create(createUserDto),
-      'User created successfully',
-    );
+  async create(@Body() createUserDto: CreateUserDto): Promise<IResponse> {
+    try {
+      const result = await this.userService.create(createUserDto);
+      // console.log(result);
+      return new ResponseDto(
+        HttpStatus.OK,
+        'User created successfully',
+        result,
+      );
+    } catch (err) {
+      return new ResponseDto(HttpStatus.BAD_REQUEST, null, err.message);
+    }
   }
 
   @Get()
