@@ -12,6 +12,10 @@ export class ResponseInterceptor implements NestInterceptor {
     return next.handle().pipe(
       map((data) => {
         context.switchToHttp().getResponse().status(data.code);
+        data = {
+          success: data.code >= 200 && data.code < 300,
+          ...data,
+        };
         delete data.code;
         return data;
       }),

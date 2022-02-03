@@ -11,7 +11,6 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ResponseDto } from 'src/common/dto/response.dto';
 import { ResponseInterface } from 'src/common/interfaces/response.interface';
 
 @Controller('user')
@@ -24,13 +23,16 @@ export class UserController {
   ): Promise<ResponseInterface<CreateUserDto>> {
     try {
       const result = await this.userService.create(createUserDto);
-      return new ResponseDto<CreateUserDto>(
-        HttpStatus.OK,
-        'User created successfully',
-        result,
-      );
+      return {
+        code: HttpStatus.OK,
+        data: result,
+        message: 'User created successfully',
+      };
     } catch (err) {
-      return new ResponseDto(HttpStatus.BAD_REQUEST, null, err.message);
+      return {
+        code: HttpStatus.BAD_REQUEST,
+        message: err.message,
+      };
     }
   }
 
