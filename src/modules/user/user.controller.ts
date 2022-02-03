@@ -21,11 +21,10 @@ export class UserController {
   @Post()
   async create(
     @Body() createUserDto: CreateUserDto,
-  ): Promise<ResponseInterface> {
+  ): Promise<ResponseInterface<CreateUserDto>> {
     try {
       const result = await this.userService.create(createUserDto);
-      // console.log(result);
-      return new ResponseDto(
+      return new ResponseDto<CreateUserDto>(
         HttpStatus.OK,
         'User created successfully',
         result,

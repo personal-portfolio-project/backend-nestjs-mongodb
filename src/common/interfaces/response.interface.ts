@@ -1,7 +1,7 @@
-export interface ResponseInterface {
+export interface ResponseInterface<T> {
   success: boolean;
   code?: number;
-  data?: any;
+  data?: T;
   message: string;
   meta?: any;
 }
